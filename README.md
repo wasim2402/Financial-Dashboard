@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# Financial Architect - Modern Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, aesthetically pleasing financial dashboard built with **React 19**, **TypeScript**, and **Vite**. This application provides a comprehensive overview of financial health, transaction history, and spending insights with a premium dark-mode interface.
 
-Currently, two official plugins are available:
+![Financial Dashboard Preview](https://lh3.googleusercontent.com/aida-public/AB6AXuAn8aR_e2W_v9uRjYwT2188tHInXw_K9E60X64259_7Xp_nNxpS8_mF6GzPz3R8T-dG-N66L585-X3L43-D1N84_nN8-0_6L8F-K2P4-X9F4-P8K5-C0W1_x-N9L2F4-5M8_oK1Y3-Z3P2-K4W9W2C5)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Key Features
 
-## React Compiler
+- **Interactive Dashboard**: Real-time data visualization using `Recharts`, featuring Area Charts for cash flow and Pie Charts for expense distribution.
+- **Transaction Management**: A powerful transaction engine with advanced filtering (by category, type) and sorting (by date, amount).
+- **Role-Based Access Control (RBAC)**: 
+  - **Viewer**: View-only access to data and insights.
+  - **Admin**: Full CRUD capabilities—Add, Edit, and Delete transactions.
+- **Intelligent Insights**: Deep-dive analysis of spending habits, identifying top categories and monthly trends.
+- **Premium UI/UX**: Built with a "Tailwind CSS" logic, featuring glassmorphism effects and a responsive layout for all devices.
+- **Data Persistence**: Your financial data and role preferences are automatically saved in `localStorage`, so nothing is lost on refresh.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Built With
 
-## Expanding the ESLint configuration
+- **React 19** - Component-based UI library.
+- **TypeScript** - Static typing for robust code.
+- **Vite** - Lightning-fast frontend build tool.
+- **Tailwind CSS** - Modern styling framework.
+- **Recharts** - Composable charting library.
+- **Lucide React** - Beautifully simple icon set.
+- **React Router 7** - Seamless client-side navigation.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📋 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Follow these steps to set up the project locally:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the Repository
+```bash
+git clone https://github.com/wasim2402/Financial-Dashboard.git
+cd financial-dashboard
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. Install Dependencies
+```bash
+npm install
 ```
+
+### 3. Run the Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173) in your browser to see the results.
+
+## 💡 How it Works
+
+### Role Switching & Data Control
+By default, the application starts in **Viewer Role**. To perform administrative actions:
+1. Navigate to the **Header** (top right corner).
+2. Use the dropdown next to the profile image to switch to **Admin Role**.
+3. Once in Admin mode, you will see "Add" buttons and "Edit/Delete" actions appear on the Transactions page.
+
+### Mock Data
+The project initializes with a set of dummy transactions to demonstrate the visualization capabilities. 
+- **Adding Data**: Click the "Add" button on the Transactions page (Admin only).
+- **Removing Data**: Use the delete icon on any transaction row (Admin only).
+- **Persistence**: All changes made are saved locally in your browser.
+
+## 🎨 Design Philosophy
+The application follows the **Financial Architect** design system, emphasizing clarity, hierarchy, and a professional aesthetic. The color palette uses deep charcoal (#0A0A0A) for backgrounds and vibrant primary accents to draw attention to key metrics.
