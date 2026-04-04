@@ -165,7 +165,7 @@ export function Dashboard() {
                     axisLine={false}
                     tickLine={false}
                     tick={{ fill: "#64748b", fontSize: 10, fontWeight: 700 }}
-                    tickFormatter={(val) => (val >= 1000 ? `₹${(val / 1000).toFixed(0)}k` : `₹${val}`)}
+                    tickFormatter={formatCurrencyAbbreviated}
                     width={45}
                   />
                   <Tooltip
