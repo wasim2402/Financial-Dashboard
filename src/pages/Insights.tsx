@@ -105,7 +105,7 @@ export function Insights() {
     };
   }, [transactions]);
 
-  const barColors = ["bg-blue-600", "bg-blue-600", "bg-tertiary", "bg-outline", "bg-surface-variant"];
+  const barColors = ["bg-blue-600"];
 
   return (
     <div className="p-6 lg:p-10 space-y-10 max-w-7xl mx-auto w-full">

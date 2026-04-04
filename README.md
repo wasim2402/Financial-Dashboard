@@ -2,7 +2,7 @@
 
 A high-performance, aesthetically pleasing financial dashboard built with **React 19**, **TypeScript**, and **Vite**. This application provides a comprehensive overview of financial health, transaction history, and spending insights with a premium dark-mode interface.
 
-![Financial Dashboard Preview](https://lh3.googleusercontent.com/aida-public/AB6AXuAn8aR_e2W_v9uRjYwT2188tHInXw_K9E60X64259_7Xp_nNxpS8_mF6GzPz3R8T-dG-N66L585-X3L43-D1N84_nN8-0_6L8F-K2P4-X9F4-P8K5-C0W1_x-N9L2F4-5M8_oK1Y3-Z3P2-K4W9W2C5)
+![Financial Dashboard Preview](https://financial-dashboard-delta-pearl.vercel.app/)
 
 ## 🚀 Key Features
 

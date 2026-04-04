@@ -183,23 +183,23 @@ export function Transactions() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-[#383838]">
-                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <th className="hidden sm:table-cell px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                   Date
                 </th>
-                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <th className="px-4 md:px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                   Description
                 </th>
-                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <th className="hidden lg:table-cell px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                   Category
                 </th>
-                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                <th className="hidden md:table-cell px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500">
                   Type
                 </th>
-                <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 text-right">
+                <th className="px-4 md:px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 text-right">
                   Amount
                 </th>
                 {isAdmin && (
-                  <th className="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 text-center">
+                  <th className="px-4 md:px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 text-center">
                     Actions
                   </th>
                 )}
@@ -215,38 +215,43 @@ export function Transactions() {
               ) : (
                 filteredAndSortedTransactions.map((tx) => (
                   <tr key={tx.id} className="hover:bg-[#161616]/50 transition-colors group">
-                    <td className="px-6 py-4">
+                    <td className="hidden sm:table-cell px-6 py-4">
                       <div className="text-sm font-medium text-slate-300">
-                        {new Date(tx.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                        {new Date(tx.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                       </div>
                       <div className="text-[10px] text-slate-500">
-                        {new Date(tx.date).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}
+                        {new Date(tx.date).getFullYear()}
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-4 md:px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${tx.type === "Income" ? "bg-secondary/10 text-secondary" : "bg-primary/10 text-primary"}`}>
+                        <div className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center ${tx.type === "Income" ? "bg-secondary/10 text-secondary" : "bg-primary/10 text-primary"}`}>
                           <span className="material-symbols-outlined text-sm">
                             {tx.type === "Income" ? "payments" : "shopping_cart"}
                           </span>
                         </div>
-                        <span className="text-sm font-semibold text-white">{tx.description}</span>
+                        <div className="flex flex-col">
+                          <span className="text-sm font-semibold text-white truncate max-w-[100px] sm:max-w-none">{tx.description}</span>
+                          <span className="sm:hidden text-[10px] text-slate-500">
+                            {new Date(tx.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })} • {tx.category}
+                          </span>
+                        </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="hidden lg:table-cell px-6 py-4">
                       <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase border ${tx.type === "Income" ? "bg-secondary/10 text-secondary border-secondary/20" : "bg-primary/10 text-primary border-primary/20"}`}>
                         {tx.category}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-400">{tx.type}</td>
-                    <td className="px-6 py-4 text-right">
-                      <span className={`text-sm font-bold ${tx.type === "Income" ? "text-secondary" : "text-tertiary"}`}>
+                    <td className="hidden md:table-cell px-6 py-4 text-sm text-slate-400">{tx.type}</td>
+                    <td className="px-4 md:px-6 py-4 text-right">
+                      <span className={`text-sm font-bold whitespace-nowrap ${tx.type === "Income" ? "text-secondary" : "text-tertiary"}`}>
                         {tx.type === "Income" ? "+" : "-"}{formatCurrency(tx.amount)}
                       </span>
                     </td>
                     {isAdmin && (
-                      <td className="px-6 py-4">
-                        <div className="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <td className="px-4 md:px-6 py-4">
+                        <div className="flex items-center justify-center gap-1 md:opacity-0 group-hover:opacity-100 transition-opacity">
                           <button onClick={() => handleEditClick(tx)} className="p-2 rounded-lg hover:bg-[#161616] text-slate-400 hover:text-primary transition-colors">
                             <span className="material-symbols-outlined text-lg">edit</span>
                           </button>

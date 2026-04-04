@@ -234,10 +234,10 @@ export function Dashboard() {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-[#161616]/50">
-                <th className="px-6 py-4 text-[0.75rem] font-bold uppercase tracking-wider text-slate-500">Transaction</th>
-                <th className="px-6 py-4 text-[0.75rem] font-bold uppercase tracking-wider text-slate-500">Category</th>
-                <th className="px-6 py-4 text-[0.75rem] font-bold uppercase tracking-wider text-slate-500">Date</th>
-                <th className="px-6 py-4 text-[0.75rem] font-bold uppercase tracking-wider text-slate-500 text-right">Amount</th>
+                <th className="px-4 md:px-6 py-4 text-[0.75rem] font-bold uppercase tracking-wider text-slate-500 text-left">Transaction</th>
+                <th className="hidden md:table-cell px-6 py-4 text-[0.75rem] font-bold uppercase tracking-wider text-slate-500">Category</th>
+                <th className="hidden sm:table-cell px-6 py-4 text-[0.75rem] font-bold uppercase tracking-wider text-slate-500">Date</th>
+                <th className="px-4 md:px-6 py-4 text-[0.75rem] font-bold uppercase tracking-wider text-slate-500 text-right">Amount</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-outline-variant/5">
@@ -247,21 +247,26 @@ export function Dashboard() {
                 </tr>
               ) : topTransactions.map((tx) => (
                 <tr key={tx.id} className="hover:bg-[#161616] transition-colors">
-                  <td className="px-6 py-4">
+                  <td className="px-4 md:px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${tx.type === 'Income' ? 'bg-secondary/10 text-secondary' : 'bg-primary/10 text-primary'}`}>
+                      <div className={`w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center ${tx.type === 'Income' ? 'bg-secondary/10 text-secondary' : 'bg-primary/10 text-primary'}`}>
                         <span className="material-symbols-outlined text-sm">
                           {tx.type === "Income" ? "call_made" : "shopping_cart"}
                         </span>
                       </div>
-                      <span className="text-sm font-medium text-white">{tx.description}</span>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-white truncate max-w-[120px] sm:max-w-none">{tx.description}</span>
+                        <span className="sm:hidden text-[10px] text-slate-400">
+                          {new Date(tx.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                        </span>
+                      </div>
                     </div>
                   </td>
-                  <td className="px-6 py-4"><span className="text-xs px-2 py-1 bg-[#161616] rounded-full text-slate-300">{tx.category}</span></td>
-                  <td className="px-6 py-4 text-sm text-slate-400">
+                  <td className="hidden md:table-cell px-6 py-4"><span className="text-xs px-2 py-1 bg-[#161616] rounded-full text-slate-300">{tx.category}</span></td>
+                  <td className="hidden sm:table-cell px-6 py-4 text-sm text-slate-400">
                     {new Date(tx.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                   </td>
-                  <td className={`px-6 py-4 text-right font-semibold ${tx.type === "Income" ? "text-secondary" : "text-tertiary"}`}>
+                  <td className={`px-4 md:px-6 py-4 text-right font-semibold whitespace-nowrap ${tx.type === "Income" ? "text-secondary" : "text-tertiary"}`}>
                     {tx.type === "Income" ? "+" : "-"} {formatCurrency(tx.amount)}
                   </td>
                 </tr>

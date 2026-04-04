@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useGlobalContext } from '../../context/GlobalContext';
 
 export function MobileNav() {
+  const { role, setRole } = useGlobalContext();
   const location = useLocation();
   const path = location.pathname;
 
@@ -66,10 +68,19 @@ export function MobileNav() {
           Trends
         </span>
       </Link>
-      <button className="flex flex-col items-center gap-1 text-slate-400">
-        <span className="material-symbols-outlined text-2xl">settings</span>
-        <span className="text-[10px] font-medium uppercase tracking-tight">Profile</span>
-      </button>
+      <div className="flex flex-col items-center gap-0.5 text-slate-400">
+        <div className="w-6 h-6 rounded-full overflow-hidden border border-primary/20">
+          <img src="/profile.jpg" alt="Profile" className="w-full h-full object-cover" />
+        </div>
+        <select
+          className="bg-transparent border-none text-[10px] text-primary uppercase font-bold tracking-wider focus:outline-none focus:ring-0 cursor-pointer text-center p-0 leading-none"
+          value={role}
+          onChange={(e) => setRole(e.target.value as any)}
+        >
+          <option value="Viewer" className="bg-[#161616] text-white">Viewer</option>
+          <option value="Admin" className="bg-[#161616] text-white">Admin</option>
+        </select>
+      </div>
     </nav>
   );
 }

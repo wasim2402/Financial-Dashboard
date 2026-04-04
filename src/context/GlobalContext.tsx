@@ -66,6 +66,8 @@ interface GlobalContextProps extends ContextState {
   addTransaction: (tx: Omit<Transaction, "id">) => void;
   editTransaction: (tx: Transaction) => void;
   deleteTransaction: (id: string) => void;
+  isSidebarOpen: boolean;
+  setSidebarOpen: (open: boolean) => void;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -88,6 +90,8 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
     return getInitialTransactions();
   });
+
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   // Persist to local storage
   useEffect(() => {
@@ -125,6 +129,8 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         addTransaction,
         editTransaction,
         deleteTransaction,
+        isSidebarOpen,
+        setSidebarOpen,
       }}
     >
       {children}
