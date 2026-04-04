@@ -132,7 +132,7 @@ export function Insights() {
         {/* Savings Rate */}
         <div className="bg-[#161616] p-6 rounded-xl relative overflow-hidden group">
           <div className="flex justify-between items-start mb-4">
-            <span className="material-symbols-outlined text-white bg-blue-600/10 p-2 rounded-lg">
+            <span className="material-symbols-outlined text-blue-600 bg-blue-600/10 p-2 rounded-lg">
               account_balance_wallet
             </span>
             <span className="text-[0.65rem] font-bold text-blue-600 uppercase tracking-tighter bg-blue-600/10 px-2 py-0.5 rounded">

@@ -23,7 +23,7 @@ export function Sidebar() {
           }
         >
           <span className="material-symbols-outlined">dashboard</span>
-          <span className="font-sans text-sm">Dashboard</span>
+          <span className="font-sans text-sm text-white">Dashboard</span>
         </Link>
         <Link
           to="/transactions"
@@ -34,7 +34,7 @@ export function Sidebar() {
           }
         >
           <span className="material-symbols-outlined">receipt_long</span>
-          <span className="font-sans text-sm">Transactions</span>
+          <span className="font-sans text-sm text-white">Transactions</span>
         </Link>
         <Link
           to="/insights"
@@ -45,7 +45,7 @@ export function Sidebar() {
           }
         >
           <span className="material-symbols-outlined">insights</span>
-          <span className="font-sans text-sm">Insights</span>
+          <span className="font-sans text-sm text-white">Insights</span>
         </Link>
       </nav>
 
@@ -55,14 +55,14 @@ export function Sidebar() {
           className="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#161616] hover:text-slate-200 transition-all"
         >
           <span className="material-symbols-outlined">help_outline</span>
-          <span className="font-sans text-sm">Support</span>
+          <span className="font-sans text-sm text-white">Support</span>
         </a>
         <a
           href="#"
           className="text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-[#161616] hover:text-slate-200 transition-all"
         >
           <span className="material-symbols-outlined">settings</span>
-          <span className="font-sans text-sm">Settings</span>
+          <span className="font-sans text-sm text-white">Settings</span>
         </a>
       </div>
     </aside>

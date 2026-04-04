@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from "recharts";
 import { useGlobalContext } from "../context/GlobalContext";
 
 export function Dashboard() {
@@ -26,7 +26,7 @@ export function Dashboard() {
       const year = date.getFullYear().toString().slice(2);
       const monthLabel = `${date.toLocaleString("en-US", { month: "short" })} '${year}`;
       const key = `${date.getFullYear()}-${date.getMonth()}`;
-      
+
       if (!acc[key]) {
         acc[key] = { name: monthLabel, Income: 0, Expenses: 0, order: date.getFullYear() * 100 + date.getMonth() };
       }
@@ -51,7 +51,7 @@ export function Dashboard() {
       .sort((a, b) => b.value - a.value);
   }, [transactions]);
 
-  const COLORS = ["#adc6ff", "#4ade80", "#fb7185", "#facc15", "#c084fc"];
+  const COLORS = ["#93c5fd", "#3b82f6", "#2563eb", "#1d4ed8", "#1e40af"];
 
   const formatCurrency = (val: number) =>
     new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(val).replace("INR", "₹").trim();
@@ -186,54 +186,41 @@ export function Dashboard() {
         {/* Spending Breakdown Donut (Bento Small) */}
         <div className="bg-[#161616] rounded-xl p-6 flex flex-col border border-[#383838]">
           <h3 className="text-lg font-semibold text-white mb-2">Spending Breakdown</h3>
-          <div className="flex-1 flex flex-col items-center justify-center relative min-h-[250px]">
+          <div className="flex-1 flex flex-col items-center justify-center relative min-h-[300px]">
             {spendingData.length > 0 ? (
-              <ResponsiveContainer width="100%" height={200}>
+              <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
-                  <text
-                    x="50%"
-                    y="50%"
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    className="fill-white font-bold text-xl tracking-tight"
-                  >
-                    {formatCurrencyAbbreviated(totalExpenses)}
-                  </text>
                   <Pie
                     data={spendingData}
                     cx="50%"
                     cy="50%"
-                    innerRadius={60}
                     outerRadius={80}
-                    paddingAngle={5}
                     dataKey="value"
-                    stroke="none"
+                    stroke="#161616"
+                    strokeWidth={2}
+                    labelLine={false}
+                    label={(props: any) => `${(props.percent * 100).toFixed(0)}%`}
                   >
                     {spendingData.map((_, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
                   <Tooltip
-                    contentStyle={{ backgroundColor: "#161616", borderColor: "#161616", borderRadius: "8px" }}
-                    itemStyle={{ color: "#fff", fontSize: "14px", fontWeight: "bold" }}
+                    contentStyle={{ backgroundColor: "#161616", borderColor: "#383838", borderRadius: "8px" }}
+                    itemStyle={{ color: "#fff", fontSize: "12px", fontWeight: "bold" }}
+                  />
+                  <Legend
+                    verticalAlign="bottom"
+                    align="center"
+                    iconType="circle"
+                    formatter={(value: string) => <span className="text-xs text-slate-300 font-medium ml-1">{value}</span>}
+                    wrapperStyle={{ paddingTop: '20px' }}
                   />
                 </PieChart>
               </ResponsiveContainer>
             ) : (
               <div className="text-slate-500 text-sm h-[200px] flex items-center">No expenses yet</div>
             )}
-
-            <div className="mt-4 w-full space-y-3">
-              {spendingData.slice(0, 4).map((entry, idx) => (
-                <div key={entry.name} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS[idx % COLORS.length] }}></span>
-                    <span className="text-sm text-slate-300 truncate max-w-[120px]">{entry.name}</span>
-                  </div>
-                  <span className="text-sm font-semibold text-white">{formatCurrency(entry.value)}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
