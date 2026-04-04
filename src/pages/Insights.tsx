@@ -311,8 +311,8 @@ export function Insights() {
               <h5 className="font-bold text-sm text-white">Top Spending Category</h5>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Your highest spending is in "{topCategory}", making up{' '}
-              <span className="text-blue-600 font-bold">{topCategoryPercentage.toFixed(0)}%</span> of your expenses. Keep an eye on it to optimize savings.
+              Spending in {topCategory} is currently your highest at{' '}
+              <span className="text-blue-600 font-bold">{topCategoryPercentage.toFixed(0)}%</span> of total expenses.
             </p>
           </div>
           {/* Observation Card */}
@@ -322,8 +322,8 @@ export function Insights() {
               <h5 className="font-bold text-sm text-white">Savings Rate Indicator</h5>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              You are saving{' '}
-              <span className="text-blue-600 font-bold">{savingsRate.toFixed(1)}%</span> of your income. {savingsRate > 20 ? "Great job!" : "Consider looking for areas to reduce expenses."}
+              Your current savings rate is{' '}
+              <span className="text-blue-600 font-bold">{savingsRate.toFixed(1)}%</span>. {savingsRate > 20 ? "Budgeting looks healthy." : "There may be opportunities to reduce non-essential spending."}
             </p>
           </div>
           {/* Observation Card */}
@@ -333,7 +333,7 @@ export function Insights() {
               <h5 className="font-bold text-sm text-white">Activity Alert</h5>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              You have <span className="text-tertiary font-bold">{entries}</span> total transactions currently tracked. Start adding more to get more insights.
+              Currently tracking <span className="text-tertiary font-bold">{entries}</span> transactions. More data will improve trend accuracy.
             </p>
           </div>
         </div>

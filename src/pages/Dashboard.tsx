@@ -15,7 +15,7 @@ export function Dashboard() {
     return {
       totalIncome: inc,
       totalExpenses: exp,
-      totalBalance: inc - exp + 200000, // added base to match realistic numbers for the demo
+      totalBalance: inc - exp + 200000,
     };
   }, [transactions]);
 

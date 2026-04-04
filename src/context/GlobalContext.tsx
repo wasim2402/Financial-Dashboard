@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import type { Transaction, Role, ContextState } from "../types";
 
-// Setup initial mocked transactions matching the UI
 const getInitialTransactions = (): Transaction[] => [
   {
     id: "t1",
@@ -29,7 +28,7 @@ const getInitialTransactions = (): Transaction[] => [
   },
   {
     id: "t4",
-    date: new Date("2024-03-25T17:30:00Z").toISOString(), // Same month as t3, different day
+    date: new Date("2024-03-25T17:30:00Z").toISOString(),
     description: "Google Ads - Q1",
     category: "Marketing",
     type: "Expense",
