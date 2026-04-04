@@ -10,8 +10,7 @@ export function Header() {
           <span className="material-symbols-outlined text-primary">menu</span>
         </div>
         <h1 className="text-lg font-bold text-white tracking-tight font-sans">
-          DASHBOARD
-        </h1>
+          FINANCIAL ARCHITECT        </h1>
       </div>
 
       <div className="flex items-center gap-3">
