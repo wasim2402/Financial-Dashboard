@@ -5,7 +5,7 @@ A high-performance, aesthetically pleasing financial dashboard built with **Reac
 Financial Dashboard Preview:- https://financial-dashboard-delta-pearl.vercel.app/
 
 ## 🚀 Key Features
-
+.
 - **Interactive Dashboard**: Real-time data visualization using `Recharts`, featuring Area Charts for cash flow and Pie Charts for expense distribution.
 - **Transaction Management**: A powerful transaction engine with advanced filtering (by category, type) and sorting (by date, amount).
 - **Role-Based Access Control (RBAC)**: 
